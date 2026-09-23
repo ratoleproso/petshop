@@ -46,6 +46,35 @@ return res.status(500).json({ message: 'Erro interno no servidor.' });
 }
 });
 
+app.post('api/pets', async (req, res) => {
+    const {tutor, nome_pet, raca, genero, tamanho, idade} =
+})
+
+??????
+
+try{
+     const query= '
+     INSERT INTO pets (tutor,nome_pet, raca, genero, tamanho, idade)
+     VALEUS (?,?,?,?,?,?)
+     ';
+
+    await db.query(query, {tutor, nome_pet,raca, genero, tamanho, idade});
+
+    return res.status(201).json({ message: 'Pet cadastrado com sucesso                                                                           3w3'})
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 app.listen(3000, () => {
 console.log('Servidor rodando em http://localhost:3000');
  });
