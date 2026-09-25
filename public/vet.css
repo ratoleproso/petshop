@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Formulário de cadastro */
+#cadastro-vet {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Título */
+#cadastro-vet::before {
+    content: "Cadastro de Veterinário";
+    display: block;
+    text-align: center;
+    color: #333;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Grupo dos campos */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Texto dos campos */
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Campos */
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Campo selecionado */
+.input-group input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Texto de exemplo dentro do campo */
+.input-group input::placeholder {
+    color: #999;
+}
+
+/* Botão */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #667eea;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+/* Quando passar o mouse */
+.btn-submit:hover {
+    background-color: #5a67d8;
+}
+
+/* Quando clicar */
+.btn-submit:active {
+    transform: scale(0.98);
+}

@@ -46,38 +46,56 @@ return res.status(500).json({ message: 'Erro interno no servidor.' });
 }
 });
 
+app.post('/api/vets', async (req, res) => {
+    const { nome, cfmv, especialidade } = req.body;
+
+    if (!nome || !cfmv || !especialidade) {
+        return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+    }
+
+    try {
+        const query = `
+            INSERT INTO veterinarios (nome, cfmv, especialidade)
+            VALUES (?, ?, ?)
+        `;
+
+        await db.query(query, [nome, cfmv, especialidade]);
+
+        return res.status(201).json({ message: 'Veterinário cadastrado com sucesso!' });
+
+    } catch (error) {
+        console.error('Erro ao salvar veterinário:', error);
+        return res.status(500).json({ message: 'Erro ao salvar no banco de dados.' });
+    }
+});
+
+
+
 app.post('api/pets', async (req, res) => {
-    const {tutor, nome_pet, raca, genero, tamanho, idade} =
-})
+    const {tutor, nome_pet, raca, genero, peso, idade} = req.body;
 
-??????
+    if (tutor || !nome_pet || !raca || !genero || !peso || !idade){
+        return res.status(400).json({ message: 'Todos os campos são obrigatórios'});
+    }
 
-try{
-     const query= '
-     INSERT INTO pets (tutor,nome_pet, raca, genero, tamanho, idade)
+   try{
+     const query= `
+     INSERT INTO pets (tutor,nome_pet, raca, genero, peso, idade)
      VALEUS (?,?,?,?,?,?)
-     ';
-
-    await db.query(query, {tutor, nome_pet,raca, genero, tamanho, idade});
-
-    return res.status(201).json({ message: 'Pet cadastrado com sucesso                                                                           3w3'})
-
-
-}
-
-
-
-
-
-
-
-
-
-
+     `;
+   
+    await db.query(query, {tutor, nome_pet,raca, genero, peso, idade});
+ 
+    return res.status(201).json(['Pet cadastrado com sucesso!']);
+   } catch (error) {
+    console.error('Erro ao salvar pet:', error);
+    return res.status(500).json({ message: 'Erro ao salvar no banco de dados.'});
+   }
+});
 
 app.listen(3000, () => {
-console.log('Servidor rodando em http://localhost:3000');
- });
+    console.log('Servidor rodando em http://localhost:3000');
+});
  
 process.on('uncaughtException', (err) => {
 console.error('O SERVIDOR CAIU PELO SEGUINTE ERRO:', err);

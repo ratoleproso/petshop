@@ -1,4 +1,4 @@
-const vetForm = document.getElementById 
+const vetForm = document.getElementById("cadastro-vet");
 
 vetForm.addEventListener('submit', async (e) =>{
     e.preventDefault();
@@ -17,16 +17,15 @@ vetForm.addEventListener('submit', async (e) =>{
     try {
         const response = await fetch('http://localhost:3000/api/vets', {
             method: 'POST',
-            headers: { 'content-type':'aplication/json'},
+            headers: { 'content-type':'application/json'},
             body: JSON.stringify(vetData)
-
-
         });
 
         const data = await response.json();
 
         if(response.ok){
             alert(data.message);
+            window.location.href = 'cadastro-pet.html';
         }else{
             alert(data.message);
         }

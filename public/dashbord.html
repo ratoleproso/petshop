@@ -2,13 +2,68 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de gerenciamento de Pet Shop - Dashboard</title>
+
+ <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #boasVindas {
+        background: #ffffff;
+        color: #333;
+        width: 100%;
+        max-width: 450px;
+        padding: 35px 30px;
+        border-radius: 12px 12px 0 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        font-size: 1.7rem;
+        line-height: 1.4;
+    }
+
+    #btnLogout {
+        width: 100%;
+        max-width: 450px;
+        padding: 12px;
+        background-color: #667eea;
+        color: #ffffff;
+        border: none;
+        border-radius: 0 0 12px 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    #btnLogout:hover {
+        background-color: #5a67d8;
+    }
+
+    #btnLogout:active {
+        transform: scale(0.98);
+    }
+</style>
+
+
 </head>
 
 <body>
-    <h1 id="boasVindas">Dashboard - Bem-vindo!</h1>
-    <button id="btnLogout">Sair</button>
+    <h1 id="boasVindas">Bem-vindo!</h1>
+    <button id="btnLogout">Cadastrar seu pet</button>
 
     <script>
         const usuarioSalvo = localStorage.getItem('usuarioLogado');
@@ -18,12 +73,12 @@
         } else {
             const usuarioDados = JSON.parse(usuarioSalvo);
             document.getElementById('boasVindas').innerText =
-                `Dashboard - Bem-vindo, ${usuarioDados.email}!`;
+                `Bem-vindo, ${usuarioDados.email}!`;
         }
 
         document.getElementById('btnLogout').addEventListener('click', () => {
             localStorage.removeItem('usuarioLogado');
-            window.location.href = 'index.html';
+            window.location.href = 'cadastro-vet.html';
         });
     </script>
 </body>
